@@ -8,22 +8,24 @@
 </head>
 <body>
   
-  <div class="container">
+  
             
-    <%= nav_bar brand: "Camisee", brand_link: root_url do %>
-        <%= menu_group do %>
-            <%= menu_item "Produtos", root_path %>
-            <%= menu_item "Usuários", "/usuarios" %>
+  <%= nav_bar brand: "Camisee", brand_link: root_url do %>
+      <%= menu_group do %>
+          <%= menu_item "Produtos", root_path %>
+          <%= menu_item "Usuários", "/usuarios" %>
+      <% end %>
+      <%= menu_group do %>
+        <%= form_tag busca_produto_path, method: :get, class: "navbar-form navbar-right" do %>
+          <div class="form-inline">
+            <%= text_field_tag :nome, @busca, class: "form-control" %>
+            <%= button_to "Buscar", nil, class: "btn btn-default" %>
+          </div>
         <% end %>
-        <%= menu_group do %>
-          <%= form_tag busca_produto_path, method: :get, class: "navbar-form navbar-right" do %>
-            <div class="form-inline">
-              <%= text_field_tag :nome, @busca, class: "form-control" %>
-              <%= button_to "Buscar", nil, class: "btn btn-default" %>
-            </div>
-          <% end %>
-        <% end %>
-    <% end %>
+      <% end %>
+  <% end %>
+  
+  <div class="container">
 
     <%= yield %>
     

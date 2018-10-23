@@ -28,6 +28,15 @@ class ProdutosController < ApplicationController
         end
     end
     
+    def show 
+        id = params[:id]
+        if !Produto.exists?(id: id)
+           render :page_404 
+        else
+            @produto = Produto.find(id)
+        end
+    end
+    
     def destroy
         id = params[:id]
         Produto.destroy id

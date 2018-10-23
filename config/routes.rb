@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :produtos, only: [:new, :create, :destroy]
   
   get "/produtos/busca" => "produtos#busca", as: :busca_produto
+  get "produtos/:id" => "produtos#show", as: :show_produto
   
   get "/usuarios" => "usuarios#index"
   get "/usuarios/new" => "usuarios#new"

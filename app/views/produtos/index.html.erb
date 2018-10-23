@@ -18,7 +18,9 @@
     <tbody>
         <% @produtos_nome.each do |produto| %>
             <tr>
-                <td><%= produto.nome %></td>
+                <td><%= link_to produto.nome,
+                                show_produto_path(produto.id),
+                                method: :get %></td>
                 <td><%= produto.descricao %></td>
                 <td><%= sprintf("%.2f", produto.preco) %></td>
                 <td><%= produto.quantidade %></td>

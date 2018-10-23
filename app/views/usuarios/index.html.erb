@@ -1,0 +1,27 @@
+
+<h1 class="page-header">Usuários</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Nascimento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @usuarios.size > 0 %>
+            <% @usuarios.each do |u| %>
+                <tr>
+                    <td><%= u.nome %></td>
+                    <td><%= u.email %></td>
+                    <td><%= u.dt_nascimento.strftime('%d/%m/%Y') %></td>
+                </tr>
+            <% end %>
+        <% else %>
+            <tr>
+                <td colspan="3">Nenhum usuário cadastrado...</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

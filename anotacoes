@@ -1,0 +1,17 @@
+RUBY
+
+- rails s -b $IP -p $PORT: roda o servidor (C9)
+- bundle install: roda dependencias do gemfile
+- rails generate controller ... : gera controller e classe
+
+BANCO DE DADOS
+- rake db:create: cria o banco, caso não tenha nenhum no gemfile
+- rails generate model ... + [campos] : cria model e arquivo em db/migrate
+    ex: rails generate model produto nome:string descricao:text preco:decimal quantidade:integer
+
+- rake db:migrate: executa todos os arquivos migrate
+- rails dbconsole: abre o console do sqlite
+- rails console: abre o console do ruby (irb)
+
+- gourmet = Produto.create nome: "Camiseta Gourmet", descricao: "Camiseta legal gourmet!", quantidade: 8, preco: 50.0
+    instancia classe produto (criada ao gerar controller) e passa os valores dos campos. Por fim salva os dados na tabela

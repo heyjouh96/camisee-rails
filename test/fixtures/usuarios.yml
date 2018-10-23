@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: 
+  dt_nascimento: 
+  email: 
+  ic_adm: 1
+
+two:
+  nome: 
+  dt_nascimento: 
+  email: 
+  ic_adm: 1

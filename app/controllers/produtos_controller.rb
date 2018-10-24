@@ -1,5 +1,7 @@
 class ProdutosController < ApplicationController
     
+    before_action :set_produto, only: [:edit, :update, :destroy]
+    
     def index
         @produtos_nome = Produto.order(:nome).limit 2
         @produtos_qtd = Produto.order :quantidade
@@ -7,6 +9,7 @@ class ProdutosController < ApplicationController
     
     def new
         @produto = Produto.new
+        renderiza :new
     end
     
     def create
@@ -17,14 +20,14 @@ class ProdutosController < ApplicationController
         
         # faz o mesmo do de cima só que de uma vez
         # valores = params.require(:produto).permit! 
-        valores = params.require(:produto).permit :nome, :preco, :descricao, :quantidade
+        valores = params.require(:produto).permit :nome, :preco, :descricao, :quantidade, :departamento_id
         @produto = Produto.new valores
         
         if @produto.save
             flash[:notice] = "Produto salvo com sucesso! "
             redirect_to root_url
         else
-           render :new  
+           renderiza :new
         end
     end
     
@@ -37,9 +40,22 @@ class ProdutosController < ApplicationController
         end
     end
     
+    def edit
+        renderiza :edit
+    end
+    
+    def update
+        valores = params.require(:produto).permit!
+        if @produto.update valores
+            flash[:notice] = "Produto atualizado com sucesso!"
+            redirect_to root_url
+        else
+            renderiza :edit
+        end
+    end
+    
     def destroy
-        id = params[:id]
-        Produto.destroy id
+        @produto.destroy 
         
         redirect_to root_url 
     end
@@ -47,6 +63,18 @@ class ProdutosController < ApplicationController
     def busca
         @busca = params[:nome]
         @produtos = Produto.where "nome like ?", "%#{@busca}%"
+    end
+    
+    private 
+    
+    def renderiza(view)
+        @departamentos = Departamento.all
+        render view
+    end
+    
+    def set_produto 
+        id = params[:id]
+        @produto = Produto.find(id)
     end
     
 end

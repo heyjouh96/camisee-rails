@@ -15,3 +15,8 @@ BANCO DE DADOS
 
 - gourmet = Produto.create nome: "Camiseta Gourmet", descricao: "Camiseta legal gourmet!", quantidade: 8, preco: 50.0
     instancia classe produto (criada ao gerar controller) e passa os valores dos campos. Por fim salva os dados na tabela
+
+
+- rails g scaffold [nome] [campos] : gera todo CRUD 
+
+- rails generate migration add_departamento_id_to_produto departamento_id:integer: cria campo departamento_id em produto

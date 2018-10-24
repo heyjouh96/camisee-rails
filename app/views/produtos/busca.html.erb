@@ -9,17 +9,11 @@
                 <th>Descrição</th>
                 <th>Preço</th>
                 <th>Quantidade</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <% @produtos.each do |produto| %>
-                <tr>
-                    <td><%= produto.nome %></td>
-                    <td><%= produto.descricao %></td>
-                    <td><%= sprintf("%.2f", produto.preco) %></td>
-                    <td><%= produto.quantidade %></td>
-                </tr>
-            <% end %>
+            <%= render partial: "produto", collection: @produtos %> 
         </tbody>
     <% else %>
         <p>Nenhum produto foi encontrado para o termo "<strong><%= @busca %></strong>".</p>

@@ -4,3 +4,4 @@
 
 <p><strong>Valor: </strong> R$ <%= @produto.preco %></p>
 <p><strong>Estoque: </strong> <%= @produto.quantidade %></p>
+<p><strong>Departamento: </strong> <%= @produto.departamento.nome if @produto.departamento != nil %></p>
